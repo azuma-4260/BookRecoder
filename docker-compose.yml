@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db:
+    build: "./db"
+    ports:
+      - "3366:3306"
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - MYSQL_DATABASE=BOOK_RECODER
+      - MYSQL_PORT=3306
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin@123
+      - MYSQL_ROOT_PASSWORD=root@123
+    container_name: book-recoder-db
